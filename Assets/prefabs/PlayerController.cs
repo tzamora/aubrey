@@ -7,24 +7,20 @@ using matnesis.TeaTime;
 public class PlayerController : MonoBehaviour {
 
     public PistolController pistol;
-
-    public Dictionary<BulletController.BulletTypeEnum, int> bulletsCounter;
-
+    
     // Use this for initialization
     void Start () {
-
-        bulletsCounter = new Dictionary<BulletController.BulletTypeEnum, int>();
-
-        //bulletsCounter[BulletController.BulletTypeEnum.Black] = 0;
-        //bulletsCounter[BulletController.BulletTypeEnum.Blue] = 0;
-        //bulletsCounter[BulletController.BulletTypeEnum.Red] = 0;
-        //bulletsCounter[BulletController.BulletTypeEnum.Yellow] = 0;
 
         shootInputRoutine();
 
         changeBulletRoutine();
 	
 	}
+
+    public void addBullet(BulletController.BulletTypeEnum bulletType)
+    {
+        pistol.addBullet(bulletType);
+    }
 
     void shootInputRoutine() {
 

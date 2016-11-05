@@ -25,11 +25,11 @@ public class BulletOrbController : MonoBehaviour {
         
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-        Debug.Log(player);
-
         if (player)
         {
-            player.bulletsCounter[bulletType]++; 
+            player.addBullet(bulletType);
+
+            Destroy(gameObject);
         }
     }
 
