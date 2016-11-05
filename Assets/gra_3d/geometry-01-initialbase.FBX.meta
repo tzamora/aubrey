@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: a69d6fac00853ca4f9f4b9d59a57c66c
+timeCreated: 1478385725
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: ' 1'
+    100002: ButtonBaseYello
+    100004: ButtonSwitchYello
+    100006: ButtonYello
+    100008: EstatuillaAmarilla
+    100010: EstatuillaAmarilla001
+    100012: EstatuillaAmarilla002
+    100014: EstatuillaAmarilla003
+    100016: //RootNode
+    100018: Initial-base
+    100020: Initial-exterior
+    100022: room1-part1
+    100024: room1-roof
+    100026: room2-part1
+    100028: room2-part1-roof
+    100030: room2-part2
+    100032: room2-part3
+    100034: room2-part3-inside
+    100036: room3-part1
+    100038: room3-part2
+    100040: room3-roof
+    100042: room4-part1
+    100044: sample
+    400000: ' 1'
+    400002: ButtonBaseYello
+    400004: ButtonSwitchYello
+    400006: ButtonYello
+    400008: EstatuillaAmarilla
+    400010: EstatuillaAmarilla001
+    400012: EstatuillaAmarilla002
+    400014: EstatuillaAmarilla003
+    400016: //RootNode
+    400018: Initial-base
+    400020: Initial-exterior
+    400022: room1-part1
+    400024: room1-roof
+    400026: room2-part1
+    400028: room2-part1-roof
+    400030: room2-part2
+    400032: room2-part3
+    400034: room2-part3-inside
+    400036: room3-part1
+    400038: room3-part2
+    400040: room3-roof
+    400042: room4-part1
+    400044: sample
+    2300000: ' 1'
+    2300002: ButtonBaseYello
+    2300004: ButtonSwitchYello
+    2300006: EstatuillaAmarilla
+    2300008: EstatuillaAmarilla001
+    2300010: EstatuillaAmarilla002
+    2300012: EstatuillaAmarilla003
+    2300014: Initial-base
+    2300016: Initial-exterior
+    2300018: room1-part1
+    2300020: room1-roof
+    2300022: room2-part1
+    2300024: room2-part1-roof
+    2300026: room2-part2
+    2300028: room2-part3
+    2300030: room2-part3-inside
+    2300032: room3-part1
+    2300034: room3-part2
+    2300036: room3-roof
+    2300038: room4-part1
+    2300040: sample
+    2300042: //RootNode
+    3300000: ' 1'
+    3300002: ButtonBaseYello
+    3300004: ButtonSwitchYello
+    3300006: EstatuillaAmarilla
+    3300008: EstatuillaAmarilla001
+    3300010: EstatuillaAmarilla002
+    3300012: EstatuillaAmarilla003
+    3300014: Initial-base
+    3300016: Initial-exterior
+    3300018: room1-part1
+    3300020: room1-roof
+    3300022: room2-part1
+    3300024: room2-part1-roof
+    3300026: room2-part2
+    3300028: room2-part3
+    3300030: room2-part3-inside
+    3300032: room3-part1
+    3300034: room3-part2
+    3300036: room3-roof
+    3300038: room4-part1
+    3300040: sample
+    3300042: //RootNode
+    4300000: Initial-base
+    4300002: EstatuillaAmarilla
+    4300006: EstatuillaAmarilla001
+    4300008: EstatuillaAmarilla002
+    4300010: EstatuillaAmarilla003
+    4300012: sample
+    4300014: room1-part1
+    4300016: room1-roof
+    4300018: Initial-exterior
+    4300020: ButtonBaseYello
+    4300022: ButtonSwitchYello
+    4300024: room2-part2
+    4300026: room2-part1-roof
+    4300028: room2-part3
+    4300030: room2-part1
+    4300032: room2-part3-inside
+    4300034: room3-part1
+    4300036: room3-part2
+    4300038: room3-roof
+    4300040: room4-part1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
