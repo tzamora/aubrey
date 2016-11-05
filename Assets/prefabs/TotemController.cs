@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using matnesis.TeaTime;
 
-public class SwitchController : MonoBehaviour
+public class TotemController : MonoBehaviour
 {
     public GameObject LittleHead;
 
@@ -19,7 +19,7 @@ public class SwitchController : MonoBehaviour
         {
             float rotationSpeed = 10f;
 
-            transform.Rotate(new Vector3(0f, 1f, 0f) * rotationSpeed);
+            LittleHead.transform.Rotate(new Vector3(0f, 1f, 0f) * rotationSpeed);
 
         });
     }
