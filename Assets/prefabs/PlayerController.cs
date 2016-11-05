@@ -5,11 +5,7 @@ using matnesis.TeaTime;
 
 public class PlayerController : MonoBehaviour {
 
-    public GameObject bulletPrefab;
-
-    public float bulletSpeed = 100f;
-
-    public Transform pistol;
+    PistolController pistol;
 
     // Use this for initialization
     void Start () {
@@ -24,26 +20,11 @@ public class PlayerController : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(0)) {
 
-                shoot();
+                pistol.shoot();
 
             }
 
         });
 
     }
-
-    // Update is called once per frame
-    void shoot () {
-
-        //
-        // instantiante the bullet and fire it
-        //
-
-        Debug.Log("vamos a ver que ocurre");
-
-        GameObject bullet = (GameObject)Instantiate(bulletPrefab, pistol.position, Quaternion.identity);
-
-        bullet.GetComponent<Rigidbody>().velocity = pistol.forward * bulletSpeed;
-
-	}
 }

@@ -13,9 +13,8 @@ public class TestSceneUIController : MonoBehaviour {
 
         dieButton.onClick.AddListener(delegate () {
 
-            Debug.Log("vamos a ver que pasa");
-
             SceneManager.LoadScene("StartScene");
+
         });
 
     }
