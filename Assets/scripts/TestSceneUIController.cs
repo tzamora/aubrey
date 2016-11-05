@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -14,7 +15,7 @@ public class TestSceneUIController : MonoBehaviour {
 
             Debug.Log("vamos a ver que pasa");
 
-            Application.LoadLevel("StartScene");
+            SceneManager.LoadScene("StartScene");
         });
 
     }

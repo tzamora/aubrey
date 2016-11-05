@@ -13,6 +13,8 @@ public class StartUIController : MonoBehaviour {
 
             Debug.Log("vamos a ver que pasa");
 
+            Application.LoadLevel("TestScene");
+
         });
 
 	}
