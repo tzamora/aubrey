@@ -48,11 +48,6 @@ public class PistolController : MonoBehaviour {
     public void addBullet(BulletController.BulletTypeEnum bulletType)
     {
         bulletsCounter[bulletType]++;
-
-        Debug.Log(bulletsCounter[BulletController.BulletTypeEnum.Black]);
-        Debug.Log(bulletsCounter[BulletController.BulletTypeEnum.Blue]);
-        Debug.Log(bulletsCounter[BulletController.BulletTypeEnum.Red]);
-        Debug.Log(bulletsCounter[BulletController.BulletTypeEnum.Yellow]);
     }
 
     public void SetBullet(BulletTypeEnum bulletType){

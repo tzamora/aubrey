@@ -11,6 +11,12 @@ public class TotemController : MonoBehaviour
 
     public GameObject totemBody;
 
+    public BulletController.BulletTypeEnum bulletType;
+
+    public GameObject bulletOrbPrefab;
+
+    public int bulletsToSpawn;
+
     // Use this for initialization
     void Start()
     {
@@ -40,10 +46,6 @@ public class TotemController : MonoBehaviour
             handleDamage(bullet);
         }
 
-        //
-        // drop bullets animation
-        //
-
     }
 
     void handleDamage(BulletController bullet){
@@ -55,6 +57,7 @@ public class TotemController : MonoBehaviour
         hp--;
 
         if (hp <= 0) {
+
             destroyTotem();
         }
 
@@ -82,11 +85,29 @@ public class TotemController : MonoBehaviour
         // spawn bullets
         //
 
-        //
-        // destroy animation
-        //
+        int repeatCounter = 0;
 
-        Destroy(gameObject);
+        Debug.Log("---->" + repeatCounter);
+
+        this.tt("spawnRoutine").Loop(100f, delegate (ttHandler handler){
+
+            GameObject bulletOrb = (GameObject)Instantiate(bulletOrbPrefab, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
+
+            bulletOrb.GetComponent<BulletOrbController>().SetBullet(bulletType);
+
+            bulletOrb.GetComponent<Rigidbody>().AddForce(Vector3.up * 100f);
+
+            repeatCounter++;
+
+            Debug.Log("---->" + repeatCounter);
+
+            if (repeatCounter > bulletsToSpawn) {
+                handler.EndLoop();
+            }
+
+        }).Add(delegate() {
+            Destroy(gameObject);
+        });
     }
 }
 
