@@ -21,17 +21,23 @@ public class BulletOrbController : MonoBehaviour {
 
 	}
 
-    void OnTriggerEnter(Collider other){
-        
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject);
+        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        Debug.Log("AAAA");
+        Debug.Log(player);
 
         if (player)
         {
+            Debug.Log("me meti doble aca");
+
             player.addBullet(bulletType);
 
             Destroy(gameObject);
         }
     }
+    
 
     public void SetBullet(BulletController.BulletTypeEnum bulletType)
     {

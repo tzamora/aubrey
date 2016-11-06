@@ -40,14 +40,32 @@ public class PistolController : MonoBehaviour {
         // instantiante the bullet and fire it
         //
 
-        GameObject bullet = (GameObject)Instantiate(bulletPrefab.gameObject, transform.position, Quaternion.identity);
+        bool isInfiniteBullet = bulletPrefab.bulletType == BulletController.BulletTypeEnum.Black;
 
-        bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+        if (bulletsCounter[bulletPrefab.bulletType] > 0 || isInfiniteBullet) {
+
+            GameObject bullet = (GameObject)Instantiate(bulletPrefab.gameObject, transform.position, Quaternion.identity);
+            bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+
+            if (!isInfiniteBullet)
+            {
+                bulletsCounter[bulletPrefab.bulletType]--;
+
+                pistolText.text = "" + bulletsCounter[bulletPrefab.bulletType];
+            }
+
+        }
+
+        
     }
 
     public void addBullet(BulletController.BulletTypeEnum bulletType)
     {
+        Debug.Log("se esta llamando dos veces?");
+
         bulletsCounter[bulletType]++;
+
+        pistolText.text = "" + bulletsCounter[bulletType];
     }
 
     public void SetBullet(BulletTypeEnum bulletType){

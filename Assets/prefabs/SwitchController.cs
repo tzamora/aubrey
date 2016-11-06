@@ -10,6 +10,8 @@ public class SwitchController : MonoBehaviour
 
     public List<GameObject> body;
 
+    public bool pressed = false;
+
     public Animator animator;
 
     // Use this for initialization
@@ -30,13 +32,11 @@ public class SwitchController : MonoBehaviour
                 body.ForEach(delegate (GameObject go) {
                     go.GetComponent<Renderer>().material.color = Color.black;
                 });
-                
                 break;
             case BulletController.BulletTypeEnum.Red:
                 body.ForEach(delegate (GameObject go) {
                     go.GetComponent<Renderer>().material.color = Color.red;
                 });
-                
                 break;
             case BulletController.BulletTypeEnum.Blue:
                 body.ForEach(delegate (GameObject go) {
@@ -75,7 +75,21 @@ public class SwitchController : MonoBehaviour
             // hit
             //
 
-            animator.SetTrigger("pressButton");
+
+
+            if (!pressed){
+
+                pressed = true;
+                animator.SetTrigger("pressButton");
+
+            } else {
+
+                pressed = false;
+                animator.SetTrigger("unpressButton");
+
+            }
+
+            
         }
         else if (bullet.bulletType == this.bulletType)
         {
