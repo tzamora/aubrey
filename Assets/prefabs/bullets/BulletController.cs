@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BulletController : MonoBehaviour {
 
-    public enum BulletTypeEnum { Black, Blue, Red, Yellow };
+    public enum BulletTypeEnum { Black, Blue, Red, Yellow, None };
 
     public Material[] bulletMaterials;
 
@@ -11,7 +11,6 @@ public class BulletController : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("kill this mofo");
         Destroy(gameObject);
     }
 }

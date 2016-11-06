@@ -41,7 +41,7 @@ public class TotemController : MonoBehaviour
         }
 
         //
-        // activated switch animation
+        // drop bullets animation
         //
 
     }
