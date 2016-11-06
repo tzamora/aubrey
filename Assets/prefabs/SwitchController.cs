@@ -1,54 +1,55 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using matnesis.TeaTime;
 
 public class SwitchController : MonoBehaviour
 {
     public BulletController.BulletTypeEnum bulletType;
 
-    public GameObject body;
+    public List<GameObject> body;
+
+    public Animator animator;
 
     // Use this for initialization
     void Start()
     {
-        rotateSwitchRoutine();
-
         setSwitchType(bulletType);
-
     }
 
     void setSwitchType(BulletController.BulletTypeEnum bType) {
 
         switch (bType) {
             case BulletController.BulletTypeEnum.None:
-                body.GetComponent<Renderer>().material.color = Color.green;
+                body.ForEach(delegate (GameObject go) {
+                    go.GetComponent<Renderer>().material.color = Color.green;
+                });
                 break;
             case BulletController.BulletTypeEnum.Black:
-                body.GetComponent<Renderer>().material.color = Color.black;
+                body.ForEach(delegate (GameObject go) {
+                    go.GetComponent<Renderer>().material.color = Color.black;
+                });
+                
                 break;
             case BulletController.BulletTypeEnum.Red:
-                body.GetComponent<Renderer>().material.color = Color.red;
+                body.ForEach(delegate (GameObject go) {
+                    go.GetComponent<Renderer>().material.color = Color.red;
+                });
+                
                 break;
             case BulletController.BulletTypeEnum.Blue:
-                body.GetComponent<Renderer>().material.color = Color.blue;
+                body.ForEach(delegate (GameObject go) {
+                    go.GetComponent<Renderer>().material.color = Color.blue;
+                });
                 break;
             case BulletController.BulletTypeEnum.Yellow:
-                body.GetComponent<Renderer>().material.color = Color.yellow;
+                body.ForEach(delegate (GameObject go) {
+                    go.GetComponent<Renderer>().material.color = Color.yellow;
+                });
                 break;
         }
 
-    }
-
-    void rotateSwitchRoutine()
-    {
-        this.tt("rotateSwitchRoutine").Loop(delegate (ttHandler handler)
-        {
-            float rotationSpeed = 2f;
-
-            body.transform.Rotate(new Vector3(0f, 1f, 0f) * rotationSpeed);
-
-        });
     }
 
     void OnCollisionEnter(Collision collision)
@@ -74,7 +75,7 @@ public class SwitchController : MonoBehaviour
             // hit
             //
 
-            Destroy(gameObject);
+            animator.SetTrigger("pressButton");
         }
         else if (bullet.bulletType == this.bulletType)
         {
@@ -83,7 +84,8 @@ public class SwitchController : MonoBehaviour
             // hit
             //
 
-            Destroy(gameObject);
+            animator.SetTrigger("pressButton");
+
         }
         else
         {
