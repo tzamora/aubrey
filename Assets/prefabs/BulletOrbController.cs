@@ -4,11 +4,13 @@ using System.Linq;
 
 public class BulletOrbController : MonoBehaviour {
 
-    public BulletController.BulletTypeEnum bulletType;
+    public BulletController.BulletTypeEnum currentBulletType;
 
     public Material[] bulletMaterials;
 
     public GameObject[] bodyGameobjects;
+
+    public AudioClip pickItem;
 
     // Use this for initialization
     void Start () {
@@ -17,37 +19,33 @@ public class BulletOrbController : MonoBehaviour {
         // init the main type
         //
 
-        SetBullet(bulletType);
+        SetBullet(currentBulletType);
 
 	}
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject);
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        Debug.Log("AAAA");
-        Debug.Log(player);
 
         if (player)
         {
-            Debug.Log("me meti doble aca");
+            SoundManager.Get.PlayClip(pickItem, false);
 
-            player.addBullet(bulletType);
+            player.addBullet(currentBulletType);
 
             Destroy(gameObject);
         }
     }
     
-
     public void SetBullet(BulletController.BulletTypeEnum bulletType)
     {
+        currentBulletType = bulletType;
+
         if (bulletType == BulletController.BulletTypeEnum.Black)
         {
             foreach (Renderer renderer in bodyGameobjects.Select(b => b.GetComponent<Renderer>())){
                 renderer.material = bulletMaterials[0];
             }
-
-            bulletType = BulletController.BulletTypeEnum.Black;
         }
 
         if (bulletType == BulletController.BulletTypeEnum.Blue)
@@ -56,8 +54,6 @@ public class BulletOrbController : MonoBehaviour {
             {
                 renderer.material = bulletMaterials[1];
             }
-
-            bulletType = BulletController.BulletTypeEnum.Blue;
         }
 
         if (bulletType == BulletController.BulletTypeEnum.Red)
@@ -66,8 +62,6 @@ public class BulletOrbController : MonoBehaviour {
             {
                 renderer.material = bulletMaterials[2];
             }
-
-            bulletType = BulletController.BulletTypeEnum.Red;
         }
 
         if (bulletType == BulletController.BulletTypeEnum.Yellow)
@@ -76,8 +70,6 @@ public class BulletOrbController : MonoBehaviour {
             {
                 renderer.material = bulletMaterials[3];
             }
-
-            bulletType = BulletController.BulletTypeEnum.Yellow;
         }
     }
 

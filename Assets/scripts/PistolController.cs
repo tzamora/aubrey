@@ -11,7 +11,7 @@ public class PistolController : MonoBehaviour {
 
     public Material[] bulletMaterials;
 
-    public BulletController bulletPrefab;
+    public BulletController currentBulletPrefab;
 
     public float bulletSpeed = 50f;
 
@@ -40,19 +40,12 @@ public class PistolController : MonoBehaviour {
         // instantiante the bullet and fire it
         //
 
-        bool isInfiniteBullet = bulletPrefab.bulletType == BulletController.BulletTypeEnum.Black;
+        bool isInfiniteBullet = currentBulletPrefab.bulletType == BulletController.BulletTypeEnum.Black;
 
-        if (bulletsCounter[bulletPrefab.bulletType] > 0 || isInfiniteBullet) {
+        if (bulletsCounter[currentBulletPrefab.bulletType] > 0 || isInfiniteBullet) {
 
-            GameObject bullet = (GameObject)Instantiate(bulletPrefab.gameObject, transform.position, Quaternion.identity);
+            GameObject bullet = (GameObject)Instantiate(currentBulletPrefab.gameObject, transform.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-
-            if (!isInfiniteBullet)
-            {
-                bulletsCounter[bulletPrefab.bulletType]--;
-
-                pistolText.text = "" + bulletsCounter[bulletPrefab.bulletType];
-            }
 
         }
 
@@ -61,11 +54,17 @@ public class PistolController : MonoBehaviour {
 
     public void addBullet(BulletController.BulletTypeEnum bulletType)
     {
-        Debug.Log("se esta llamando dos veces?");
-
         bulletsCounter[bulletType]++;
 
-        pistolText.text = "" + bulletsCounter[bulletType];
+        //
+        // update if we see the current bullet being
+        //
+
+        if (currentBulletPrefab.bulletType == bulletType) {
+            pistolText.text = "" + bulletsCounter[bulletType];
+        }
+
+        
     }
 
     public void SetBullet(BulletTypeEnum bulletType){
@@ -76,11 +75,11 @@ public class PistolController : MonoBehaviour {
 
             pistolText.text = "∞";
 
-            bulletPrefab.GetComponent<Renderer>().material = bulletMaterials[0];
+            currentBulletPrefab.GetComponent<Renderer>().material = bulletMaterials[0];
 
-            bulletPrefab.bulletType = BulletController.BulletTypeEnum.Black;
+            currentBulletPrefab.bulletType = BulletController.BulletTypeEnum.Black;
 
-            bulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(0.0f, 0.0f, 0.0f));
+            currentBulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(0.0f, 0.0f, 0.0f));
         }
 
         if (bulletType == BulletTypeEnum.Blue){
@@ -89,11 +88,11 @@ public class PistolController : MonoBehaviour {
 
             pistolText.text = "" + bulletsCounter[BulletController.BulletTypeEnum.Blue];
 
-            bulletPrefab.GetComponent<Renderer>().material = bulletMaterials[1];
+            currentBulletPrefab.GetComponent<Renderer>().material = bulletMaterials[1];
 
-            bulletPrefab.bulletType = BulletController.BulletTypeEnum.Blue;
+            currentBulletPrefab.bulletType = BulletController.BulletTypeEnum.Blue;
 
-            bulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(0.0f, 0.0f, 1.0f));
+            currentBulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(0.0f, 0.0f, 1.0f));
         }
 
         if (bulletType == BulletTypeEnum.Red){
@@ -102,11 +101,11 @@ public class PistolController : MonoBehaviour {
 
             pistolText.text = "" + bulletsCounter[BulletController.BulletTypeEnum.Red];
 
-            bulletPrefab.GetComponent<Renderer>().material = bulletMaterials[2];
+            currentBulletPrefab.GetComponent<Renderer>().material = bulletMaterials[2];
 
-            bulletPrefab.bulletType = BulletController.BulletTypeEnum.Red;
+            currentBulletPrefab.bulletType = BulletController.BulletTypeEnum.Red;
 
-            bulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(1.0f, 0.0f, 0.0f));
+            currentBulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(1.0f, 0.0f, 0.0f));
         }
 
         if (bulletType == BulletTypeEnum.Yellow)
@@ -115,11 +114,11 @@ public class PistolController : MonoBehaviour {
 
             pistolText.text = "" + bulletsCounter[BulletController.BulletTypeEnum.Yellow];
 
-            bulletPrefab.GetComponent<Renderer>().material = bulletMaterials[3];
+            currentBulletPrefab.GetComponent<Renderer>().material = bulletMaterials[3];
 
-            bulletPrefab.bulletType = BulletController.BulletTypeEnum.Yellow;
+            currentBulletPrefab.bulletType = BulletController.BulletTypeEnum.Yellow;
 
-            bulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(1.0f, 1.0f, 0.0f));
+            currentBulletPrefab.GetComponent<TrailRenderer>().sharedMaterial.SetColor("_EmissionColor", new Color(1.0f, 1.0f, 0.0f));
         }
     }
 }

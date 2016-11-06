@@ -10,7 +10,7 @@ public class SwitchController : MonoBehaviour
 
     public List<GameObject> body;
 
-    public bool pressed = false;
+    public bool buttonIsPressed;
 
     public Animator animator;
 
@@ -74,22 +74,18 @@ public class SwitchController : MonoBehaviour
             //
             // hit
             //
+            if (!buttonIsPressed)
+            {
 
-
-
-            if (!pressed){
-
-                pressed = true;
+                buttonIsPressed = true;
                 animator.SetTrigger("pressButton");
 
             } else {
 
-                pressed = false;
+                buttonIsPressed = false;
                 animator.SetTrigger("unpressButton");
 
             }
-
-            
         }
         else if (bullet.bulletType == this.bulletType)
         {
@@ -98,7 +94,19 @@ public class SwitchController : MonoBehaviour
             // hit
             //
 
-            animator.SetTrigger("pressButton");
+            if (!buttonIsPressed)
+            {
+
+                buttonIsPressed = true;
+
+                animator.SetTrigger("pressButton");
+
+                GameManager.Get.player.pistol.bulletsCounter[bulletType]--;
+
+                GameManager.Get.player.pistol.pistolText.text = "" + GameManager.Get.player.pistol.bulletsCounter[bulletType];
+
+
+            }
 
         }
         else

@@ -87,8 +87,6 @@ public class TotemController : MonoBehaviour
 
         int repeatCounter = 0;
 
-        Debug.Log("---->" + repeatCounter);
-
         this.tt("spawnRoutine").Loop(100f, delegate (ttHandler handler){
 
             GameObject bulletOrb = (GameObject)Instantiate(bulletOrbPrefab, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
@@ -98,8 +96,6 @@ public class TotemController : MonoBehaviour
             bulletOrb.GetComponent<Rigidbody>().AddForce(Vector3.up * 100f);
 
             repeatCounter++;
-
-            Debug.Log("---->" + repeatCounter);
 
             if (repeatCounter > bulletsToSpawn) {
                 handler.EndLoop();
