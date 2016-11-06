@@ -85,7 +85,7 @@ public class TotemController : MonoBehaviour
         // spawn bullets
         //
 
-        int repeatCounter = 0;
+        int repeatCounter = 1;
 
         this.tt("spawnRoutine").Loop(100f, delegate (ttHandler handler){
 
