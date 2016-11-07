@@ -16,18 +16,11 @@ public class DoorController : MonoBehaviour {
 
         this.tt("checkSwitchesRoutine").Loop(300f, delegate(ttHandler handler) {
 
-            requiredSwitches.ForEach(delegate (SwitchController switchC){
+            int numberOfButtonsPressed = requiredSwitches.Where(r => r.buttonIsPressed).Count();
 
-                //Debug.Log(switchC.buttonIsPressed);
-
-            });
-
-            bool stillPending = requiredSwitches.Any(r => !r.buttonIsPressed);
-
-            if (!stillPending)
+            if (numberOfButtonsPressed == requiredSwitches.Count())
             {
                 Debug.Log("abriendo puerta");
-
                 openDoor();
                 handler.EndLoop();
 
