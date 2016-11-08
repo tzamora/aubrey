@@ -15,13 +15,7 @@ public class PlatformController : MonoBehaviour
     {
 
         this.tt("checkSwitchesRoutine").Loop(300f, delegate (ttHandler handler) {
-
-            requiredSwitches.ForEach(delegate (SwitchController switchC) {
-
-                //Debug.Log(switchC.buttonIsPressed);
-
-            });
-
+            
             bool stillPending = requiredSwitches.Any(r => !r.buttonIsPressed);
 
             if (!stillPending)
@@ -87,5 +81,4 @@ public class PlatformController : MonoBehaviour
             player.transform.parent = null;
         }
     }
-    
 }
