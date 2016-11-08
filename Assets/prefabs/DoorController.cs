@@ -23,7 +23,6 @@ public class DoorController : MonoBehaviour {
                 Debug.Log("abriendo puerta");
                 openDoor();
                 handler.EndLoop();
-
             }
 
         });
