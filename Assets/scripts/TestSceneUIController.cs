@@ -10,8 +10,7 @@ public class TestSceneUIController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
-        dieButton.onClick.AddListener(delegate () {
+		dieButton.onClick.AddListener(delegate () {
 
             SceneManager.LoadScene("StartScene");
 

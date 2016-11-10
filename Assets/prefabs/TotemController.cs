@@ -21,7 +21,7 @@ public class TotemController : MonoBehaviour
     void Start()
     {
         rotateSwitchRoutine();
-    }
+	}
 
     void rotateSwitchRoutine()
     {

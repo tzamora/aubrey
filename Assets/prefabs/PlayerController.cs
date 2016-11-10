@@ -15,6 +15,17 @@ public class PlayerController : MonoBehaviour {
 
         changeBulletRoutine();
 	
+		this.tt("lockScreen").Loop(delegate(ttHandler handler) {
+
+			if (Input.GetKey(KeyCode.Tab)) {
+
+				Debug.Log("vamos a ver que pasa");
+
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+
+		});
 	}
 
     public void addBullet(BulletController.BulletTypeEnum bulletType)
