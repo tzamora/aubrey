@@ -13,8 +13,6 @@ public class PlatformController : MonoBehaviour
 	public List<int> switchesToProgress;
 
 	private int currentProgressPosition = 0;
-
-	private bool isAtBeggining = true;
     
     // Use this for initialization
     void Start()
@@ -26,7 +24,9 @@ public class PlatformController : MonoBehaviour
 
 	void checkSwitchesRoutine()
 	{
-		this.tt("checkSwitchesRoutine").Loop(300f, delegate (ttHandler handler) {
+		this.tt("checkSwitchesRoutine").Add(0.3f, delegate (ttHandler handler) {
+
+            Debug.Log("esto va a correr unicamente 300s");
 
 			//
 			//
@@ -37,14 +37,6 @@ public class PlatformController : MonoBehaviour
 			//
 			//
 			//
-
-//			if(numberOfButtonsPressed == 0 && !isAtBeggining){
-//
-//				Debug.Log("going back to start");
-//
-//				isAtBeggining = true;
-//				movePlatform(startPosition);
-//			}
 
 			List<Transform> orderedPlatformPositions = platformPositions.OrderBy(p => p.transform.position.y).ToList();
 
@@ -86,7 +78,7 @@ public class PlatformController : MonoBehaviour
 				}
 			}
 
-		});
+		}).Repeat();
 	}
 
 	void movePlatform(Vector3 newPosition)
@@ -94,7 +86,7 @@ public class PlatformController : MonoBehaviour
 
         Vector3 startPosition = transform.position;
 
-        this.tt("openDoorRoutine").Loop(2f, delegate (ttHandler handler) {
+        this.tt("openDoorRoutine").Reset().Loop(2f, delegate (ttHandler handler) {
 
 			transform.position = Vector3.Lerp(startPosition, newPosition, handler.t);
 
