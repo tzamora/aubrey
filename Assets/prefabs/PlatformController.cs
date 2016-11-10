@@ -8,36 +8,95 @@ public class PlatformController : MonoBehaviour
 {
     public List<SwitchController> requiredSwitches;
 
-    public Transform endPosition;
+    public List<Transform> platformPositions;
+
+	public List<int> switchesToProgress;
+
+	private int currentProgressPosition = 0;
+
+	private bool isAtBeggining = true;
     
     // Use this for initialization
     void Start()
     {
+		currentProgressPosition = 0;
 
-        this.tt("checkSwitchesRoutine").Loop(300f, delegate (ttHandler handler) {
-            
-            bool stillPending = requiredSwitches.Any(r => !r.buttonIsPressed);
-
-            if (!stillPending)
-            {
-                openDoor();
-                handler.EndLoop();
-
-            }
-
-        });
-
-
+		checkSwitchesRoutine ();
     }
 
-    void openDoor()
+	void checkSwitchesRoutine()
+	{
+		this.tt("checkSwitchesRoutine").Loop(300f, delegate (ttHandler handler) {
+
+			//
+			//
+			//
+
+			int numberOfButtonsPressed = requiredSwitches.Where(r => r.buttonIsPressed).ToList().Count();
+
+			//
+			//
+			//
+
+//			if(numberOfButtonsPressed == 0 && !isAtBeggining){
+//
+//				Debug.Log("going back to start");
+//
+//				isAtBeggining = true;
+//				movePlatform(startPosition);
+//			}
+
+			List<Transform> orderedPlatformPositions = platformPositions.OrderBy(p => p.transform.position.y).ToList();
+
+			switchesToProgress.Sort();
+
+			for(int i = 0; i < switchesToProgress.Count; i++)
+			{
+				if(numberOfButtonsPressed == switchesToProgress[i])
+				{
+					bool differentProgressPosition = currentProgressPosition != i;
+
+					Debug.Log("current: " + currentProgressPosition + " next: " + i);
+
+					if(differentProgressPosition)
+					{
+						movePlatform(orderedPlatformPositions[i].position);
+
+						currentProgressPosition = i;
+
+						break;
+
+					}
+				}
+				else if(numberOfButtonsPressed < switchesToProgress[currentProgressPosition])
+				{
+
+					bool differentProgressPosition = currentProgressPosition != currentProgressPosition - 1;
+
+					if(differentProgressPosition)
+					{
+						movePlatform(orderedPlatformPositions[currentProgressPosition - 1].position);
+
+						currentProgressPosition = currentProgressPosition - 1;
+
+						break;
+
+					}
+
+				}
+			}
+
+		});
+	}
+
+	void movePlatform(Vector3 newPosition)
     {
 
         Vector3 startPosition = transform.position;
 
         this.tt("openDoorRoutine").Loop(2f, delegate (ttHandler handler) {
 
-            transform.position = Vector3.Lerp(startPosition, endPosition.position, handler.t);
+			transform.position = Vector3.Lerp(startPosition, newPosition, handler.t);
 
         });
 
@@ -62,8 +121,6 @@ public class PlatformController : MonoBehaviour
     {
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
 
-        Debug.Log(player);
-
         if (player)
         {
             player.transform.parent = transform;
@@ -76,8 +133,6 @@ public class PlatformController : MonoBehaviour
 
         if (player)
         {
-            Debug.Log("salio");
-
             player.transform.parent = null;
         }
     }
