@@ -69,7 +69,7 @@ ModelImporter:
     4300018: chumBall-Yellow
     4300020: mBall-Blue
     4300022: mBall-Red
-    7400000: Take 001
+    7400000: AnimationMBall Rotate 720
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -91,7 +91,45 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: AnimationMBall Rotate 720
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: chumBall-Yellow
+        weight: 1
+      - path: mBall-Black
+        weight: 1
+      - path: mBall-Blue
+        weight: 1
+      - path: mBall-Red
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
