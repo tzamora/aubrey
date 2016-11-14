@@ -87,7 +87,7 @@ public class TotemController : MonoBehaviour
 
         int repeatCounter = 1;
 
-        this.tt("spawnRoutine").Loop(100f, delegate (ttHandler handler){
+        this.tt("spawnRoutine").Loop(300f, delegate (ttHandler handler){
 
             GameObject bulletOrb = (GameObject)Instantiate(bulletOrbPrefab, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
 
