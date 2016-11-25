@@ -13,6 +13,8 @@ public class PlatformController : MonoBehaviour
 	public List<int> switchesToProgress;
 
 	private int currentProgressPosition = 0;
+
+    public int platformTime = 2;
     
     // Use this for initialization
     void Start()
@@ -87,7 +89,7 @@ public class PlatformController : MonoBehaviour
 
         Vector3 startPosition = transform.position;
 
-        this.tt("openDoorRoutine").Reset().Loop(2f, delegate (ttHandler handler) {
+        this.tt("openDoorRoutine").Reset().Loop(platformTime, delegate (ttHandler handler) {
 
 			transform.position = Vector3.Lerp(startPosition, newPosition, handler.t);
 
