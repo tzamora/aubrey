@@ -6,7 +6,7 @@ using matnesis.TeaTime;
 
 public class PlatformController : MonoBehaviour
 {
-    public List<SwitchController> requiredSwitches;
+    public List<SwitchController> requiredSwitches = new List<SwitchController>();
 
     public List<Transform> platformPositions;
 
@@ -24,17 +24,18 @@ public class PlatformController : MonoBehaviour
 
 	void checkSwitchesRoutine()
 	{
-		this.tt("checkSwitchesRoutine").Add(0.3f, delegate (ttHandler handler) {
 
-            Debug.Log("esto va a correr unicamente 300s");
+        //List<SwitchController> activatedSwitches;
 
-			//
-			//
-			//
+        this.tt("checkSwitchesRoutine").Add(0.3f, delegate (ttHandler handler) {
 
-			int numberOfButtonsPressed = requiredSwitches.Where(r => r.buttonIsPressed).ToList().Count();
+            //
+            //
+            //
+            
+            int numberOfButtonsPressed = requiredSwitches.Where(r => r.buttonIsPressed).ToList().Count(); ;
 
-			//
+            //
 			//
 			//
 

@@ -7,7 +7,7 @@ using matnesis.TeaTime;
 
 public class DoorController : MonoBehaviour {
 
-    public List<SwitchController> requiredSwitches;
+    public List<SwitchController> requiredSwitches = new List<SwitchController>();
 
     public Transform endPosition;
 

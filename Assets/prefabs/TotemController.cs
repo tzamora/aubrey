@@ -17,6 +17,8 @@ public class TotemController : MonoBehaviour
 
     public int bulletsToSpawn;
 
+    public bool destroyed = false;
+
     // Use this for initialization
     void Start()
     {
@@ -29,7 +31,8 @@ public class TotemController : MonoBehaviour
         {
             float rotationSpeed = 10f;
 
-            LittleHead.transform.Rotate(new Vector3(0f, 1f, 0f) * rotationSpeed);
+            if(LittleHead)
+                LittleHead.transform.Rotate(new Vector3(0f, 1f, 0f) * rotationSpeed);
 
         });
     }
@@ -50,16 +53,20 @@ public class TotemController : MonoBehaviour
 
     void handleDamage(BulletController bullet){
 
+        if (destroyed)
+        {
+            return;
+        }
+
+        if (hp <= 0) {
+            destroyTotem();
+        }
+
         //
         // remove one point damage 
         //
 
         hp--;
-
-        if (hp <= 0) {
-
-            destroyTotem();
-        }
 
         //
         // damage animation
@@ -81,21 +88,53 @@ public class TotemController : MonoBehaviour
 
     void destroyTotem() {
 
+        destroyed = true;
+
         //
         // spawn bullets
         //
 
         int repeatCounter = 1;
 
-        this.tt("spawnRoutine").Loop(300f, delegate (ttHandler handler){
+        Vector3 headPosition = LittleHead.transform.position;
 
-            GameObject bulletOrb = (GameObject)Instantiate(bulletOrbPrefab, transform.position + new Vector3(0f, 2f, 0f), Quaternion.identity);
+        Destroy(LittleHead);
+
+        this.tt("spawnRoutine").Loop(delegate (ttHandler handler){
+
+            int side = repeatCounter % 4;
+
+            print("viene el side");
+            print(side);
+
+
+
+            GameObject bulletOrb = (GameObject)Instantiate(bulletOrbPrefab, headPosition + new Vector3(0f, 0.25f, 0f), Quaternion.identity);
 
             bulletOrb.GetComponent<BulletOrbController>().SetBullet(bulletType);
 
-            bulletOrb.GetComponent<Rigidbody>().AddForce(Vector3.up * 100f);
+            Vector3 direction = Vector3.zero;
+
+            switch (side) {
+                case 0 :
+                    direction = Vector3.right;
+                    break;
+                case 1:
+                    direction = Vector3.forward;
+                    break;
+                case 2:
+                    direction = Vector3.left;
+                    break;
+                case 3:
+                    direction = Vector3.back;
+                    break;
+            }
+
+            bulletOrb.GetComponent<Rigidbody>().AddForce( (Vector3.up + direction)* 100f);
 
             repeatCounter++;
+
+            handler.Wait(0.3f);
 
             if (repeatCounter > bulletsToSpawn) {
                 handler.EndLoop();
