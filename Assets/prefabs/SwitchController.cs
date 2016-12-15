@@ -25,7 +25,7 @@ public class SwitchController : MonoBehaviour
         switch (bType) {
             case BulletController.BulletTypeEnum.None:
                 body.ForEach(delegate (GameObject go) {
-                    go.GetComponent<Renderer>().material.color = Color.green;
+                    go.GetComponent<Renderer>().material.color = Color.gray;
                 });
                 break;
             case BulletController.BulletTypeEnum.Black:

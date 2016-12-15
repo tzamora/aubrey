@@ -15,6 +15,7 @@ ModelImporter:
     100014: Object001
     100016: notif_lights
     100018: Notif_Tower
+    100020: '!004'
     400000: Notif_.002
     400002: Notif_.003
     400004: Notif_.004
@@ -25,6 +26,7 @@ ModelImporter:
     400014: Object001
     400016: notif_lights
     400018: Notif_Tower
+    400020: '!004'
     2300000: Notif_.002
     2300002: Notif_.003
     2300004: Notif_.004
@@ -34,6 +36,7 @@ ModelImporter:
     2300012: Object001
     2300014: notif_lights
     2300016: Notif_Tower
+    2300018: '!004'
     3300000: Notif_.002
     3300002: Notif_.003
     3300004: Notif_.004
@@ -43,6 +46,7 @@ ModelImporter:
     3300012: Object001
     3300014: notif_lights
     3300016: Notif_Tower
+    3300018: '!004'
     4300000: Notif_MainTower
     4300002: Notif_.003
     4300004: Notif_.004
@@ -52,6 +56,8 @@ ModelImporter:
     4300012: Object001
     4300014: Notif_Tower
     4300016: notif_lights
+    4300018: '!004'
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -99,6 +105,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -109,7 +116,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1
