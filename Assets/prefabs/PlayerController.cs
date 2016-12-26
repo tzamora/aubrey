@@ -14,8 +14,11 @@ public class PlayerController : MonoBehaviour {
         shootInputRoutine();
 
         changeBulletRoutine();
-	
-		this.tt("lockScreen").Loop(delegate(ttHandler handler) {
+
+        toLastCheckPointRoutine();
+
+
+        this.tt("lockScreen").Loop(delegate(ttHandler handler) {
 
 			if (Input.GetKey(KeyCode.Tab)) {
 
@@ -27,6 +30,24 @@ public class PlayerController : MonoBehaviour {
 
 		});
 	}
+
+    public void toLastCheckPointRoutine() {
+
+        this.tt("toLastCheckPointRoutine").Loop(delegate (ttHandler handler) {
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+
+                //
+                // restart, take me to the last checkpoint
+                //
+
+                transform.position = GameManager.Get.LastCheckPoint;
+
+            }
+
+        });
+    }
 
     public void addBullet(BulletController.BulletTypeEnum bulletType)
     {

@@ -27,19 +27,9 @@ public class PlatformController : MonoBehaviour
 	void checkSwitchesRoutine()
 	{
 
-        //List<SwitchController> activatedSwitches;
-
         this.tt("checkSwitchesRoutine").Add(0.3f, delegate (ttHandler handler) {
 
-            //
-            //
-            //
-            
             int numberOfButtonsPressed = requiredSwitches.Where(r => r.buttonIsPressed).ToList().Count(); ;
-
-            //
-			//
-			//
 
 			List<Transform> orderedPlatformPositions = platformPositions.OrderBy(p => p.transform.position.y).ToList();
 
@@ -51,7 +41,7 @@ public class PlatformController : MonoBehaviour
 				{
 					bool differentProgressPosition = currentProgressPosition != i;
 
-					Debug.Log("current: " + currentProgressPosition + " next: " + i);
+					
 
 					if(differentProgressPosition)
 					{
