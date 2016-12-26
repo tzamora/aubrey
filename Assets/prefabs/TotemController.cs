@@ -102,7 +102,7 @@ public class TotemController : MonoBehaviour
 
         this.tt("spawnRoutine").Loop(delegate (ttHandler handler){
 
-            int side = repeatCounter % 4;
+            int side = repeatCounter % 5;
 
             print("viene el side");
             print(side);
@@ -117,10 +117,10 @@ public class TotemController : MonoBehaviour
 
             switch (side) {
                 case 0 :
-                    direction = Vector3.right;
+                    direction = Vector3.forward;
                     break;
                 case 1:
-                    direction = Vector3.forward;
+                    direction = Vector3.down;
                     break;
                 case 2:
                     direction = Vector3.left;
@@ -128,6 +128,9 @@ public class TotemController : MonoBehaviour
                 case 3:
                     direction = Vector3.back;
                     break;
+				case 4:
+					direction = Vector3.right;
+					break;
             }
 
             bulletOrb.GetComponent<Rigidbody>().AddForce( (Vector3.up + direction)* 100f);
