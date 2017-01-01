@@ -11,19 +11,24 @@ public class DoorController : MonoBehaviour {
 
     public Transform endPosition;
 
+	public AudioClip openDoorSound;
+
 	// Use this for initialization
 	void Start () {
 
-        this.tt("checkSwitchesRoutine").Loop(300f, delegate(ttHandler handler) {
+		this.tt().Loop(delegate(ttHandler handler) {
 
             int numberOfButtonsPressed = requiredSwitches.Where(r => r.buttonIsPressed).Count();
 
             if (numberOfButtonsPressed == requiredSwitches.Count())
             {
                 Debug.Log("abriendo puerta");
+				SoundManager.Get.PlayClip(openDoorSound, false);
                 openDoor();
                 handler.EndLoop();
             }
+
+			handler.Wait(0.3f);
 
         });
 

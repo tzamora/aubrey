@@ -14,6 +14,8 @@ public class SwitchController : MonoBehaviour
 
     public Animator animator;
 
+	public AudioClip pressedSound;
+
     // Use this for initialization
     void Start()
     {
@@ -105,6 +107,7 @@ public class SwitchController : MonoBehaviour
 
                 GameManager.Get.player.pistol.pistolText.text = "" + GameManager.Get.player.pistol.bulletsCounter[bulletType];
 
+				SoundManager.Get.PlayClip (pressedSound, false);
 
             }
 

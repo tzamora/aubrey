@@ -19,6 +19,8 @@ public class TotemController : MonoBehaviour
 
     public bool destroyed = false;
 
+	public AudioClip destroySound;
+
     // Use this for initialization
     void Start()
     {
@@ -144,6 +146,7 @@ public class TotemController : MonoBehaviour
             }
 
         }).Add(delegate() {
+			SoundManager.Get.PlayClip (destroySound, false);
             Destroy(gameObject);
         });
     }

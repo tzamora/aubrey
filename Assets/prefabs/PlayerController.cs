@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
 
         toLastCheckPointRoutine();
 
-
         this.tt("lockScreen").Loop(delegate(ttHandler handler) {
 
 			if (Input.GetKey(KeyCode.Tab)) {
@@ -58,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 
         this.tt("shootInputRoutine").Loop(delegate(ttHandler handler) {
 
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetMouseButton(0)) {
 
                 pistol.shoot();
 
